@@ -1,0 +1,97 @@
+% LuaLaTeX
+\documentclass[10pt]{article}
+
+% Packages
+\usepackage[no-math]{fontspec}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage[backend=biber]{biblatex} % we use the biber implementation of biblatex for bibliographies
+\usepackage[nonumberlist, toc]{glossaries}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage[numbered]{./latex/mcode}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{siunitx}
+
+% Formatting
+\geometry{letterpaper, portrait, margin=.85in}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont[
+    BoldFont       = Avenir Medium,
+    ItalicFont     = Avenir Book Oblique,
+    BoldItalicFont = Avenir Medium Oblique
+]{Avenir Book}
+\setmonofont{Andale Mono}
+\sisetup{detect-all} % used by siunitx to always typeset units in the font of the current environment
+\urlstyle{same}
+
+\bibliography{./latex/bib}
+\newcommand\theteamname{Midnight Sun Solar Car Team} % should not change normally
+\newcommand\theuniversityname{University of Waterloo} % should also not change normally
+\newcommand\theteamwebsite{www.uwmidsun.com} % should also not normally change
+\newcommand\theteamphone{(519) 888-4567 x32978} % should also not normally change
+
+\newcommand\thetitle{The Title} % <--------------- add the title
+\newcommand\thesubtitle{The Subtitle} % <--------------- add a subtitle or leave the field empty
+\newcommand\theauthor{The Author} % <--------------- add an author with contact info or leave the field empty
+\newcommand\theauthorcontact{author@uwmidsun.com} % <--------------- add author's email or leave the field empty
+\newcommand\thedate{January 1, 1988} % <--------------- update the date, use this format
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{\thetitle}
+\rhead{\theteamname}
+
+\begin{document}
+
+% Title Page
+\begin{titlepage}
+\large
+\vspace*{2cm}
+\centering
+\includegraphics[width=.25\textwidth]{./figures/midnightSunLogoCircle.png} \\
+\vspace{1.5cm}
+{\LARGE \theteamname} \\
+\theuniversityname \\
+\vspace{2.2cm}
+{\huge\bfseries \thetitle} \\
+\vspace{0.2cm}
+{\LARGE \thesubtitle} \\
+\vspace{2.2cm}
+\ifdefined \theauthor
+\par Prepared by: \\
+\theauthor \\
+\theauthorcontact \\
+\fi
+\thedate \\
+\vfill
+\theteamwebsite \\
+\theteamphone
+\end{titlepage}
+
+% Main Matter
+\tableofcontents
+%\listoffigures % <-------------- uncomment for list of figures
+%\listoftables % <-------------- uncomment for list of tables
+
+\section{Section}
+This is a reference to the ASC 2018 regulations \cite{ASC2018regs}.
+
+\subsection{Subsection}
+This is a reference to literature on dampers \cite{dampers}.
+
+% Bibliography
+\clearpage
+\printbibliography
+
+% Appendix
+\clearpage
+\appendix
+\section{Sample Appendix}
+\label{app:simple}
+\lstinputlisting[breaklines=true]{./matlab/script.m}
+\end{document}
