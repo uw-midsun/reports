@@ -306,6 +306,9 @@ The worst case of four loading scenarios was taken (2 clevis positions, each wit
 \subsubsection{Coilover tabs}
 The maximum normal force and acceleration force on the rear wheel was resolved as a compressive load in the coilover and applied to this tab.
 
+\subsubsection{Trailing arms}
+Similar to the front suspension, the trailiing arm was simulated using a dummy wheel model. A force was applied to the contact patch and supports were added to the rod end, plain bearing and coilover clevis on the trailing arm.
+
 \subsection{Steering}
 \subsubsection{Steering arms}
 A compression support was added on the face datuming off of the upright. The maximum lateral force on the tire during 1G cornering was resolved as a torque on the upright. This torque was applied by a bearing load acting at the end of the steering arm.
@@ -314,7 +317,8 @@ A compression support was added on the face datuming off of the upright. The max
 A similar analysis to that for the steering arm was used. Force was applied to one end of the tie rod while the other remained fixed. Both sides of the tie rod were tested with an applied force and fixed support.
 
 \subsection{Results}
-All FEA results for suspension and steering components are summarized in Table \ref{tab:fea-results-suspension-steering}. Note that FEA for the rear suspension trailing arm and brace. Simulations of the rear trailing arm are experiencing convergence and stress concentration issues.
+All FEA results for suspension and steering components are summarized in Table \ref{tab:fea-results-suspension-steering}.
+
 \begin{table}
 \centering
 \begin{tabular}{lllrr}
@@ -333,7 +337,7 @@ MS00036     & Coilover Control Arm Tab     & Chromoly Steel, 4130 &             
 MS00038     & Coilover Mounting Plate      & Chromoly Steel, 4130 &                 147 &           3.1 \\
 MS00086     & Rear Suspension Clevis Mount & Chromoly Steel, 4130 &                 231 &           2.0 \\
 MS00047     & Rear Suspension Coilover Tab & Chromoly Steel, 4130 &                 147 &           3.1 \\
-MS00065     & Trailing Arm                 & Aluminum, 7075       &                   X &             X \\
+MS00065     & Trailing Arm                 & Aluminum, 7075       &                 263 &           1.9 \\
 MS00074     & Steering Arm                 & Aluminum, 6061-T6    &                  77 &           3.5 \\
 MS00101     & Tie Rod                      & Aluminum, 6061-T6    &                  41 &           6.6 \\
 \bottomrule
@@ -833,21 +837,21 @@ Accelerating \& Cornering (Outside Rear Wheel) & -2.72                    & 3.70
 \label{fig:MS00047-RearSuspensionCoiloverTab}
 \end{figure}
 
-%\begin{figure}[H]
-%\centering
-%\begin{subfigure}[b]{.48\textwidth}
-%\centering
-%\includegraphics[width=0.9\textwidth]{figures/fea/parts/MS00065-TrailingArm-Setup}
-%\caption{Setup}
-%\end{subfigure}
-%\begin{subfigure}[b]{.48\textwidth}
-%\centering
-%\includegraphics[width=0.9\textwidth]{figures/fea/parts/MS00065-TrailingArm-Stress}
-%\caption{Stress}
-%\end{subfigure}
-%\caption{Trailing arm}
-%\label{fig:MS00065-TrailingArm}
-%\end{figure}
+\begin{figure}[H]
+\centering
+\begin{subfigure}[b]{.48\textwidth}
+\centering
+\includegraphics[width=0.9\textwidth]{figures/fea/parts/MS00065-TrailingArm-Setup}
+\caption{Setup}
+\end{subfigure}
+\begin{subfigure}[b]{.48\textwidth}
+\centering
+\includegraphics[width=0.9\textwidth]{figures/fea/parts/MS00065-TrailingArm-Stress}
+\caption{Stress}
+\end{subfigure}
+\caption{Trailing arm}
+\label{fig:MS00065-TrailingArm}
+\end{figure}
 
 \begin{figure}[H]
 \centering
