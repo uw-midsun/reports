@@ -177,7 +177,7 @@ The roll cage is integrated into the design of the chassis members enclosing the
 \end{figure}
 
 \subsection{Doors}
-The vehicle's doors are designed with an aluminium planar tube structure enclosed by composite panels. Protection against side impacts is improved by the addition of 4 inches (approx.\ \SI{10}{\centi\meter}) of energy absorbing foam (Impaxx™ 700 Series from DOW Chemical). This foam, combined with the aluminum frame and composite outer panel, together are designed to satisfy crush zone requirements for ASC. The total thickness of the door (outer face to chassis) is \SI{15}{\centi\meter}. The aluminum frame is designed to brace against chassis members in the event of a side impact and meets the same 5G requirement as the chassis, so that the foam layer can crush and absorb energy. FEA for the door frame is shown in Figures \ref{fig:door-displacement}, \ref{fig:door-stress}, and \ref{fig:door-stress-zoom} in Appendix \ref{sec:fea-chassis-door-images}.
+The vehicle's doors are designed with an aluminium planar tube structure enclosed by composite panels. Protection against side impacts is improved by the addition of 4 inches (approx.\ \SI{10}{\centi\meter}) of energy absorbing foam (Impaxx™ 700 Series from DOW Chemical). This foam, combined with the aluminum frame and composite outer panel, together are designed to satisfy crush zone requirements for ASC. The total thickness of the door (outer face to chassis) exceeds \SI{15}{\centi\meter}. The aluminum frame is designed to brace against chassis members in the event of a side impact and meets the same 5G requirement as the chassis, so that the foam layer can crush and absorb energy. FEA for the door frame is shown in Figures \ref{fig:door-displacement}, \ref{fig:door-stress}, and \ref{fig:door-stress-zoom} in Appendix \ref{sec:fea-chassis-door-images}.
 
 \section{Seat belts}
 MSXII is equipped with 5-point seat belts for both occupants. Seat belt hardpoints are mounted to metal tabs welded to chassis members, shown in Figure \ref{fig:seat-belt-tab-positions}. Figure \ref{fig:seat-belt-tab} shows one of these tabs. Figures \ref{fig:seat-belt-side-view} and \ref{fig:seat-belt-top-view} demonstrate compliance with ASC regulations 10.3.E.
@@ -251,7 +251,7 @@ The steering system uses a rear-steering, left-hand-drive rack and pinion from H
 
 \section{Suspension}
 \subsection{Front suspension}
-The front suspension uses dual A-arms with an outboard dampener and coilover spring. The upper and lower control arms are custom-built from 4130 chromoly tubes. The dampener and coilover are a single integrated assembly supplied by \"Ohlins, sold as the TTX25, which is marketed for Formula SAE vehicles. Figure \ref{fig:front-suspension} shows the front suspension assembly.
+The front suspension uses dual A-arms with an outboard dampener and coilover spring. The upper and lower control arms are custom-built from 4130 chromoly tubes. The dampener and coilover are a single integrated assembly supplied by \"Ohlins, sold as the TTX25, which is marketed for Formula SAE vehicles. Figures \ref{fig:front-suspension} and \ref{fig:front-suspension-exploded} show the front suspension assembly.
 
 \begin{figure}
 \centering
@@ -267,7 +267,7 @@ The front suspension uses dual A-arms with an outboard dampener and coilover spr
 \label{fig:front-suspension-exploded}
 \end{figure}
 
-The front suspension lower control arm bears the majority of the shear stress from road forces. Both the upper and lower control arms use 7/16" spherical bearings (QA1 part number \href{https://www.qa1.net/rod-ends-and-related/spherical-bearings/ypb-t-high-misalignment-stainless-steel-series}{YPB7T}), which are pressed into their respective chromoly bearing seats in the control arms. Under maximum loading conditions, the stress due to bending in the bolt held in double shear was found to be \SI{204.63}{\mega\pascal}. Using an SAE grade 5 results in a safety factor of approximately 3.0.
+Since the front suspension lower control arm bears the majority of the shear stress from road forces, a load bearing flange has been added on the top side of the bearing seat which constrains it axially whenever in compression. This is shown in Figure \ref{fig:front-suspension-cross-section}. Both the upper and lower control arms use 7/16" spherical bearings (QA1 part number \href{https://www.qa1.net/rod-ends-and-related/spherical-bearings/ypb-t-high-misalignment-stainless-steel-series}{YPB7T}), which are pressed into their respective chromoly bearing seats in the control arms. A CAD nominal \SI{12}{\micro\metre} diametral press fit retains the spherical bearing in rare cases where the suspension rebound is sufficient to reverse the load. As an added precaution, a set screw in both the top and bottom helps to retain the bearing. Under maximum loading conditions, the stress due to bending in the bolt held in double shear was found to be \SI{204.63}{\mega\pascal}. Using an SAE grade 5 bolt results in a safety factor of approximately 3.0.
 
 \begin{figure}
 \centering
@@ -275,8 +275,6 @@ The front suspension lower control arm bears the majority of the shear stress fr
 \caption{View of front suspension critical rod end, cross-section}
 \label{fig:front-suspension-cross-section}
 \end{figure}
-
-Since the lower bearing will be carrying approximately 25\% of the weight of the car, a load bearing flange has been added on the top side of the bearing seat which constrains it axially whenever in compression. A CAD nominal \SI{12}{\micro\metre} diametral press fit retains the spherical bearing in rare cases where the suspension rebound is sufficient to reverse the load. As an added precaution, a set screw in both the top and bottom helps to retain the bearing.
 
 \subsection{Rear suspension}
 The rear suspension uses independent trailing arms mounted outwards from the rear of the chasssis. The trailing arm itself is custom-machined and mounts the same \"Ohlins TTX25 shock absorber as the front suspension. Figure \ref{fig:rear-suspension} shows the rear suspension assembly.
@@ -290,8 +288,22 @@ The rear suspension uses independent trailing arms mounted outwards from the rea
 
 The rear suspension pivots about plain bearings pressed into the trailing arm (QA1 part number 39N443). Stress in the trailing arm at the plain bearings was simulated using FEA as shown Figure \ref{fig:rear-suspension} to verify sufficient safety factor. The lack of rod ends allows a smaller interface with the rear suspension clevis mounts, which would otherwise need to be sized significantly larger.
 
+\section{Tires}
+MSXII is designed to use Schwalbe Energizer Solar 51L tires. These tires have a max load rating of \SI{195}{\kilo\gram} and are designed specifically for light electric vehicles travelling at highway speeds (\SI{120}{km/h}). Their maximum inflation pressure is \SI{70}{PSI}.
+
+\section{Battery box}
+The vehicle's main battery pack is divided between two custom composite enclosures, which are bolted to mounting points at the lower rear of the chassis, forward of the trailing arms. Each battery box's internal design contains two or four strings of six cell banks in series.
+
+Electrical isolation is present at multiple levels in the pack design, with non-conducting fibreglass reinforced tubes providing the backbone for each string, and insulating shileding covering every string. This allows the use of metal reinforcement in the box and fasteners. Each string is secured via bolts to the battery box, and both battery boxes mount to the vehicle chassis via metal bolts as well.
+
+\section{Body panels}
+MSXII will have several discrete composite body panels mounted to the chassis. Parameters such as the number of composite layers or thickness of core material will vary based on the requirements for each panel. The PV array is attached to the roof and hood panels via a uniform silicone layer. These panels are reinforced for increased rigidity. All body panels, including those supporting the array, mount to the chassis using bolts.
+
+\section{Fasteners}
+All structural fasteners used in the vehicle are at least of metric grade 8.8, with most being grade 10.9 or 12.9. Fujilok (self-locking) nuts from Spaenaur are used in all structural applications. The bolts mounting each motor are safety threaded as required for all blind-holes. A complete Bill of Materials listing every fastener used in the car is available upon request.
+
 \section{Finite element analysis}
-Finite element analysis was performed using ANSYS on the chassis and all suspension and steering components (downstream from the rack and pinion). FEA of the chassis and door followed the specifications provided by the ASC regulations. A general methodology was to fix a solid beam or wall in space, and apply a 5G acceleration to the chassis against it. Images for FEA simulations of each requested scenario are shown in Appendix \ref{sec:fea-chassis-door-images}.
+Finite element analysis was performed using ANSYS on the chassis, doors, and all suspension and steering components (downstream from the rack and pinion). FEA of the chassis and door followed the specifications provided by the ASC regulations. A general methodology was to fix a solid beam or wall in space and apply a 5G acceleration to the chassis against it. Images for FEA simulations of each requested scenario are shown in Appendix \ref{sec:fea-chassis-door-images}.
 
 Worst-case loading forces on each wheel were used to derive appropriate contraints and forces for FEA simulation of the suspension and steering system. A complete derivation and summary of loading forces on each wheel is given in Appendix \ref{sec:loading-conditions}. Images of all FEA simulations for suspension and steering are available in Appendix \ref{sec:fea-parts-images}.
 
