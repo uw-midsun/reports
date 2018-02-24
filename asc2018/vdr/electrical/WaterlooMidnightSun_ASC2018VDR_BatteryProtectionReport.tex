@@ -111,7 +111,8 @@ we use an ADC and a shunt resistor to measure the current.
 
 If it detects a fault condition, it will raise a BPS fault error, which is
 broadcast on the CAN bus. This message is processed by our
-\texttt{power distribution} and \texttt{driver controls} boards.
+\texttt{power distribution} and \texttt{driver controls} boards. It will also
+drive the two pack fans.
 
 The only way to clear a fault will be to power off the car, which will result
 in the car undergoing the proper power-sequencing steps.
