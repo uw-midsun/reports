@@ -77,32 +77,74 @@
 
 % Main Matter
 \tableofcontents
+\newpage
 %\listoffigures % <-------------- uncomment for list of figures
 %\listoftables % <-------------- uncomment for list of tables
 
 \section{Overview}
 
+\subsection{5.2.E.1: Battery Approval Form}
+
+See attached form
+
+\includepdf[pages={-}]{forms/battery_approval_form.pdf}
+
+\subsection{5.2.E.2: Battery Pack Configuration}
+
 \begin{table}[!htbp]
-\centering
-\begin{tabular}{|l|l|l|}
+\begin{tabular}{|l|l|}
 \hline
-\multirow{4}{*}{5.2.E.2} & Cells per module                           & 36   \\ \cline{2-3}
-                         & Modules per string                         & 36   \\ \cline{2-3}
-                         & Strings in parallel                        & 1    \\ \cline{2-3}
-                         & Total cell count                           & 1296 \\ \hline
-\multirow{2}{*}{5.2.E.3} & Over temperature set point (charge) (C)    & 45   \\ \cline{2-3}
-                         & Over temperature set point (discharge) (C) & 60   \\ \hline
-5.2.E.4                  & Under voltage set point (V)                & 2.5  \\ \hline
-5.2.E.5                  & Over voltage set point (V)                 & 4.2  \\ \hline
-5.2.E.6                  & Over current set point (A)                 & 110  \\ \hline
+\textbf{Cells per module}    & 36   \\ \hline
+\textbf{Modules per string}  & 36   \\ \hline
+\textbf{Strings in parallel} & 1    \\ \hline
+\textbf{Total cell count}    & 1296 \\ \hline
 \end{tabular}
 \end{table}
 
-\section{Block Diagram}
+\subsection{5.2.E.3: Over temperature set points}
 
-% TODO
+\begin{table}[!htbp]
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Over temperature set point (charge) (C)}    & 45 \\ \hline
+\textbf{Over temperature set point (discharge) (C)} & 60 \\ \hline
+\end{tabular}
+\end{table}
 
-\section{BPS Operation}
+\subsection{5.2.E.4: Under voltage set points}
+
+\begin{table}[!htbp]
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Under voltage set point (V)}    & 2.5 \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{5.2.E.5: Over voltage set points}
+
+\begin{table}[!htbp]
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Over voltage set point (V)}    & 4.2 \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{5.2.E.6: Over current set points}
+
+\begin{table}[!htbp]
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Over current set point (A)}    & 110 \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{5.2.E.7: BPS Block Diagram}
+
+\textbf{TODO: add legend}
+
+\includegraphics[width=1\textwidth]{./figures/msxii-electrical-battery-box-block-diagram.png}
+
+\subsection{5.2.E.8: BPS Operation}
 
 The BPS will monitor for each of the fault conditions on each iteration of its
 \texttt{main} loop. We use the \texttt{LTC6804-1} in a daisy-chain
@@ -117,20 +159,21 @@ drive the two pack fans.
 The only way to clear a fault will be to power off the car, which will result
 in the car undergoing the proper power-sequencing steps.
 
-\section{How firmware or settings will be rendered static}
+\subsection{5.2.E.9: Rendering Firmware Static}
 
 We will seal the programming header of the BPS microcontroller, which will
 make it impossible to reprogram the firmware.
 
-\section{Driver dash function and BPS fault indicator}
+\subsection{5.2.E.10: Driver dash and BPS fault indicator}
 
+\subsubsection{Driver Dash}
 When the \texttt{Lights} board receives the BPS fault message, it turns on the
 Strobe light mounted on the roof of the car.
 
 There is an LED on the driver dash. When the \texttt{Driver Controls} board
 receives the BPS fault message, it turns on this LED.
 
-\section{External Cutoff switch}
+\subsubsection{External Cutoff switch}
 
 The External Cutoff switch is monitored by the BPS. Pressing the External
 Cutoff switch results in the HV rails being disconnected, and disconnects the
@@ -138,8 +181,6 @@ unprotected rail.
 
 When the BPS detects that the switch is pressed, it raises a BPS fault, and
 the normal Fault behaviour occurs.
-
-\includepdf[pages={-}]{forms/battery_approval_form.pdf}
 
 % Bibliography
 %\pagebreak
