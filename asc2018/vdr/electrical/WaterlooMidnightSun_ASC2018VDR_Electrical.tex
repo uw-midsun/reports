@@ -80,6 +80,7 @@
 %\listoftables % <-------------- uncomment for list of tables
 
 \section{Overview}
+
 Midnight Sun XII's electrical system consists of high- and low-voltage domains that are electrically isolated for safety. The high-voltage system includes the Sunpower E-series solar cells, Nomura maximum power point trackers, Tritium motor controllers and NGM SCM-150 motors. These are externally-sourced components purchased by the team and interface with the vehicle's custom embedded systems.
 
 The low-voltage system is comprised of custom circuit-boards serving several functions for monitoring and controlling the vehicle, primarily: driver controls, power distribution, and battery management. Several smaller PCBs are located throughout the vehicle to support various sensor interfacing and data collection functions. Most boards communicate over a unified CAN bus, with some nodes supporting smaller subsystems over I2C. The low-voltage power rail is normally provided by the main battery pack via DC-DC converters, but can also be switched to an auxiliary \SI{12}{\volt} Ni-MH battery during startup or fault modes.
