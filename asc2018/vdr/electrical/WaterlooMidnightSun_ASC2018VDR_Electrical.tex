@@ -102,7 +102,7 @@ Due to the different CAN specifications of the Tritium WaveSculptor motor contro
 
 \subsubsection{System Power Requirements}
 
-Our primary power requirements are from our motors. We have two NGM SCM150s with a total peak power of 15kW and total continuous power rating of 7.5kW. We plan on limiting maximum system current to 110A, giving us plenty of headroom for our fuse.
+Our primary power requirements are from our motors. We have two NGM SCM150s with a total peak power of 15kW and total continuous power rating of 7.5kW. We plan on limiting maximum system current to 130A, giving us plenty of headroom for our fuse.
 
 The maximum expected current draw of our LV system is negligible, but our maximum expected peak current is around 10A with the horn and lights on. For reliability, we will use two Vicor DC-DCs in parallel with a combined current capability of 21A to power the LV system.
 
@@ -119,9 +119,9 @@ All HV systems are isolated at their sources by HV non-latching, normally-open r
 
 In a fault condition, the main battery relay is opened, disconnecting the battery pack. This also disconnects the DC-DCs, causing all other HV relays to open.
 
-To protect the HV system in case of a short, we are using the Littelfuse L50QS150.V, a DC-rated 150A High-Speed fuse capable of breaking 50kA. Per regulations, we have one in each battery enclosure. Our HV system uses 2 AWG wire rated up to 105$^{\circ}$C, resulting in a theoretical maximum current capacity of 215A. With a current limit set at 110A, a 150A fuse meets all fusing requirements.
+To protect the HV system in case of a short, we are using the Eaton's Bussmann EV25-175, a DC-rated 175A High-Speed fuse capable of breaking 20kA. Per regulations, we have one in each battery enclosure. Our HV system uses 2 AWG wire rated for 255A. With a current limit set at 130A, a 175A fuse meets all fusing requirements.
 
-\includepdf[pages={-}]{figures/L50QS_High_Speed_Fuse_Datasheet}
+\includepdf[pages={-}]{figures/bus-ele-ds-10563-ev-power}
 
 \subsection{5.2.C.2}
 
