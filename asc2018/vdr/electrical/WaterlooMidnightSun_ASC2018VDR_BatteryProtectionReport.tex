@@ -152,7 +152,8 @@ we use an ADC and a shunt resistor to measure the current.
 If it detects a fault condition, it will raise a BPS fault error, which is
 broadcast on the CAN bus. This message is processed by our
 \texttt{power distribution} and \texttt{driver controls} boards. It will also
-drive the two pack fans.
+drive the two pack fans. This also disconnects the HV battery relay and the
+main power switch.
 
 The only way to clear a fault will be to power off the car, which will result
 in the car undergoing the proper power-sequencing steps.
@@ -162,7 +163,7 @@ in the car undergoing the proper power-sequencing steps.
 We will seal the programming header of the BPS microcontroller, which will
 make it impossible to reprogram the firmware.
 
-\subsection{5.2.E.10: Driver dash and BPS fault indicator}
+\subsection{5.2.E.10: Driver dash and BPS fault indicator for External Cutoff switch}
 
 \subsubsection{Driver Dash}
 
@@ -173,6 +174,8 @@ There is an LED on the driver dash. When the \texttt{Driver Controls} board
 receives the BPS fault message, it turns on this LED.
 
 \subsubsection{External Cutoff switch}
+
+The External Cutoff switch is mounted on the outside of the car by the driver.
 
 The External Cutoff switch is monitored by the BPS. Pressing the External
 Cutoff switch results in the HV rails being disconnected, and disconnects the
