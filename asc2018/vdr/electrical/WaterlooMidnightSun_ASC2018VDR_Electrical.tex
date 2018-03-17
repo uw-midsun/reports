@@ -1,4 +1,4 @@
-% LuaLaTeX
+%! TEX program = lualatex
 \pdfvariable minorversion=7
 \documentclass[10pt]{article}
 
@@ -34,11 +34,11 @@
 \newcommand\theteamwebsite{www.uwmidsun.com} % should also not normally change
 \newcommand\theteamphone{(519) 888-4567 x32978} % should also not normally change
 
-\newcommand\thetitle{Preliminary Vehicle Design Report} % <--------------- add the title
+\newcommand\thetitle{Electrical System Technical Report} % <--------------- add the title
 \newcommand\thesubtitle{Electrical} % <--------------- add a subtitle or leave the field empty
-\newcommand\theauthor{Minghao Ji} % <--------------- add an author with contact info or comment this line
-\newcommand\theauthorcontact{minghao.ji@uwmidsun.com} % <--------------- add author's email or leave the field empty
-\newcommand\thedate{October 15, 2017} % <--------------- update the date, use this format
+\newcommand\theauthor{Titus Chow} % <--------------- add an author with contact info or comment this line
+\newcommand\theauthorcontact{titus.chow@uwmidsun.com} % <--------------- add author's email or leave the field empty
+\newcommand\thedate{\today} % <--------------- update the date, use this format
 
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
@@ -46,8 +46,6 @@
 \rhead{\theteamname}
 
 \begin{document}
-\includepdf[pages={-}]{forms/battery_approval_form.pdf}
-\includepdf[pages={-}]{forms/solar_cell_approval_form.pdf}
 
 % Title Page
 \begin{titlepage}
@@ -81,65 +79,57 @@
 \listoffigures % <-------------- uncomment for list of figures
 %\listoftables % <-------------- uncomment for list of tables
 
-\section{History}
-Midnight Sun was founded in 1988 at the University of Waterloo. The team has produced 11 solar-powered vehicles since its inception, numbered MSI through MSXI. MSX and its predecessors have been traditional Challenger class cars. MSXI was the team's first attempt at a Cruiser class vehicle, which ultimately suffered from design issues relating to its monocoque design. With MSXII, the team has regrouped and designed a new Cruiser vehicle from the gound up, focussing strongly on reliability, safety, and manufacturability.
-
-\section{Contacts}
-Questions regarding the electrical design and implementation of MSXII should be directed to one of the following contacts:
-
-\begin{table}[!h]
-\centering
-\begin{tabular}{llll}
-\toprule
-Name            & Title               & Phone        & Email \\
-\midrule
-Tak Alguire     & Project Manager     & 519-574-4610 & tak.alguire@uwmidsun.com \\
-Minghao Ji      & Engineering Manager & 519-500-1292 & minghao.ji@uwmidsun.com \\
-Titus Chow      & Electrical Lead     & 226-978-7104 & titus.chow@uwmidsun.com \\
-\bottomrule
-\end{tabular}
-\end{table}
-
 \section{Overview}
+
 Midnight Sun XII's electrical system consists of high- and low-voltage domains that are electrically isolated for safety. The high-voltage system includes the Sunpower E-series solar cells, Nomura maximum power point trackers, Tritium motor controllers and NGM SCM-150 motors. These are externally-sourced components purchased by the team and interface with the vehicle's custom embedded systems.
 
-The low-voltage system is comprised of custom circuit-boards serving several functions for monitoring and controlling the vehicle, primarily: driver controls, power distribution, battery management, and external lights. Several smaller PCBs are located throughout the vehicle to support various sensor interfacing and data collection functions. Most boards communicate over a unified CAN bus, with some nodes supporting smaller subsystems over I2C or SPI. The low-voltage power rail is normally provided by the main battery pack via DC-DC converters, but can also be switched to an auxiliary \SI{12}{\volt} Ni-MH battery during startup or fault modes.
+The low-voltage system is comprised of custom circuit-boards serving several functions for monitoring and controlling the vehicle, primarily: driver controls, power distribution, and battery management. Several smaller PCBs are located throughout the vehicle to support various sensor interfacing and data collection functions. Most boards communicate over a unified CAN bus, with some nodes supporting smaller subsystems over I2C. The low-voltage power rail is normally provided by the main battery pack via DC-DC converters, but can also be switched to an auxiliary \SI{12}{\volt} Ni-MH battery during startup or fault modes.
 
-Due to the different CAN specifications of the Tritium WaveSculptor motor controllers, they are allocated a separate powertrain CAN network which interfaces with the primary CAN bus via dedicated transceiver boards. A block diagram of all electrical systems is shown in Figure \ref{fig:msxii-electrical-full-block-diagram}. A block diagram of only the vehicle's high-voltage systems is shown in Figure \ref{fig:msxii-electrical-hv-block-diagram}.
+Due to the different CAN specifications of the Tritium WaveSculptor motor controllers, they are allocated a separate powertrain CAN network which interfaces with the primary CAN bus via dedicated transceiver boards. For similar reasons, we also allocate separate CAN buses for solar sensing and charger control.
 
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{figures/msxii-electrical-full-block-diagram}
-\caption{Block diagram of all electrical systems}
-\label{fig:msxii-electrical-full-block-diagram}
+\section{Electrical System Design}
+
+\subsection{5.2.C.1}
+
+\subsubsection{System Diagram}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,page=4]{figures/msxii-block-diagrams}
+    \caption{Block diagram of the full electrical system}
+    \label{fig:msxii-electrical-full-block-diagram}
 \end{figure}
 
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{figures/msxii-electrical-hv-block-diagram}
-\caption{Block diagram of all high-voltage electrical systems}
-\label{fig:msxii-electrical-hv-block-diagram}
+\subsubsection{System Power Requirements}
+
+Our primary power requirements are from our motors. We have two NGM SCM150s with a total peak power of 15kW and total continuous power rating of 7.5kW. We plan on limiting maximum system current to 130A, giving us plenty of headroom for our fuse.
+
+The maximum expected current draw of our LV system is negligible, but our maximum expected peak current is around 10A with the horn and lights on. For reliability, we will use two Vicor DC-DCs in parallel with a combined current capability of 21A to power the LV system.
+
+\subsubsection{HV Power System}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,page=3]{figures/msxii-block-diagrams}
+    \caption{Rough schematic of HV system with isolation mechanisms}
+    \label{fig:msxii-electrical-hv-system}
 \end{figure}
 
-\section{Battery}
-For MSXII the team chose to use MJ1 18650 cells produced by LG Chem Ltd. 36 MJ1 cells are put in parallel to form a module, and 36 modules are put in series to provide a \SI{130.86}{\volt} nominal, \SI{16.5}{\kilo\watt\hour} capacity battery pack. Within each module, cells will be spot welded to nickel tabs, which are themselves soldered to copper bus bars forming a high-ampacity interconnect. Bus bars of adjacent modules are mechanically connected together to create series connections through the pack.
+All HV systems are isolated at their sources by HV non-latching, normally-open relays. The main battery pack uses one relay in each enclosure to keep both enclosures disconnected when in the safe state. All other HV relays are powered by DC-DCs through Power Distribution.
 
-The cells were sourced from Liion Wholesale in early 2017.
+In a fault condition, the main battery relay is opened, disconnecting the battery pack. This also disconnects the DC-DCs, causing all other HV relays to open.
 
-\section{Testing Methodology}
-Battery testing is expected to be completed in 4 main phases, outlined below.
+To protect the HV system in case of a short, we are using the Eaton's Bussmann EV25-175, a DC-rated 175A High-Speed fuse capable of breaking 20kA. Per regulations, we have one in each battery enclosure. Our HV system uses 2 AWG wire rated for 255A. With a current limit set at 130A, a 175A fuse meets all fusing requirements.
 
-\subsection{Phase One}
-The first phase requires verification of the battery management system (BMS). This will test the system's ability to measure and monitor voltage, current, and temperature measurements from each of the modules. The system must be able to correctly respond to under-voltage, over-voltage, over-current, and over-temperature conditions to demonstrate that the BMS can actively protect the battery. Phase one is currently underway and is expected to be complete by November 2017. 
+\includepdf[pages={-}]{figures/bus-ele-ds-10563-ev-power}
 
-\subsection{Phase Two}
-The second phase requires testing module performance and reliability. A prototype module containing 36 cells in parallel will be built and tested. This module will undergo charge cycle tests using a benchtop power supply and an electronic load. The BMS will be connected to log data and ensure safety. The team will then build 3 battery modules to test the series connections between modules. Phase two is expected to be complete by December 2017. 
+\includepdf[pages={-}]{figures/champlain-sae-exrad-150-hvfx}
 
-\subsection{Phase Three}
-The third phase involves the full manufacturing and testing of the battery pack. The team will be able to assess the overall performance of the battery and make necessary modifications to the cooling system prior to installing the battery in the car. The pack will be discharged at 1C, which is approximately \SI{120}{\ampere} of current. This will be accomplished by either powering the vehicle motors mounted to a dynamometer, or by using a salt water load with a resistance designed for the target current draw. Phase three is expected to be completed by the end of January 2018.
+\subsection{5.2.C.2}
 
-\subsection{Phase Four}
-The final phase of battery testing will involve building a mechanical enclosure and integrating the pack into the vehicle. With a drivable vehicle, the team will be able to test the pack under real world conditions, and make any changes necessary prior to the race. Reliability of the modules and connections under harsh environmental conditions can be evaluated during road tests. Since this requires the vehicle to be in a drivable state, it is expected to begin in April or May 2018 and finish before July. 
+See attached form.
+
+\includepdf[pages={-}]{forms/battery_approval_form.pdf}
 
 % Bibliography
 %\pagebreak
