@@ -35,10 +35,10 @@
 \newcommand\theteamphone{(519) 888-4567 x32978} % should also not normally change
 
 \newcommand\thetitle{Vehicle Design Report} % <--------------- add the title
-\newcommand\thesubtitle{Mechanical} % <--------------- add a subtitle or leave the field empty
+\newcommand\thesubtitle{Mechanical Technical Report} % <--------------- add a subtitle or leave the field empty
 \newcommand\theauthor{Minghao Ji} % <--------------- add an author with contact info or comment this line
 \newcommand\theauthorcontact{minghao.ji@uwmidsun.com} % <--------------- add author's email or leave the field empty
-\newcommand\thedate{November 16, 2017} % <--------------- update the date, use this format
+\newcommand\thedate{\today} % <--------------- update the date, use this format
 
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
@@ -46,77 +46,30 @@
 \rhead{\theteamname}
 
 \begin{document}
-\includepdf[pages={-}]{pages/cover_page_flattened.pdf} % TODO update with VDR cover sheet
-
-% Title Page
-\begin{titlepage}
-\large
-\vspace*{2cm}
-\centering
-\includegraphics[width=.25\textwidth]{figures/RIMMED_logo_round_no_road_full_text_MIDRES.png} \\
-\vspace{1.5cm}
-{\LARGE \theteamname} \\
-\theuniversityname \\
-\vspace{2.2cm}
-{\LARGE MSXII} \\
-\vspace{0.4cm}
-{\huge\bfseries \thetitle} \\
-\vspace{0.2cm}
-{\LARGE \thesubtitle} \\
-\vspace{2.2cm}
-\ifdefined \theauthor
-\par Prepared by: \\
-\theauthor \\
-\theauthorcontact \\
-\fi
-\thedate \\
-\vfill
-\theteamwebsite \\
-\theteamphone
-\end{titlepage}
+\includepdf[pages={-}]{pages/cover_page_flattened.pdf}
 
 % Main Matter
-\tableofcontents
-\listoffigures % <-------------- uncomment for list of figures
-\listoftables % <-------------- uncomment for list of tables
-
+% 1. History of team and vehicle (one paragraph)
 \section{History}
 Midnight Sun was founded in 1988 at the University of Waterloo. The team has produced 11 solar-powered vehicles since its inception, numbered MSI through MSXI. MSX and its predecessors have been traditional Challenger class cars. MSXI was the team's first attempt at a Cruiser class vehicle, which ultimately suffered from design issues relating to its monocoque design. With MSXII, the team has regrouped and designed a new Cruiser vehicle from the gound up, focussing strongly on reliability, safety, and manufacturability.
 
-\section{Contacts}
-Questions regarding the mechanical design and implementation of MSXII should be directed to one of the following contacts:
-
-\begin{table}[!h]
-\centering
-\begin{tabular}{llll}
-\toprule
-Name            & Title               & Phone        & Email \\
-\midrule
-Tak Alguire     & Project Manager     & 519-574-4610 & tak.alguire@uwmidsun.com \\
-Minghao Ji      & Engineering Manager & 519-500-1292 & minghao.ji@uwmidsun.com \\
-Devon Copeland  & Mechanical Lead     & 226-792-7383 & devon.copeland@uwmidsun.com \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\section{Overview}
-MSXII is a dual-occupant Cruiser class vehicle. Its structural design uses a steel alloy tube chassis with non-structural fibreglass body panels. The majority of the vehicle's powertrain systems are located behind the occupant cell, including the battery pack, power junction box, motor controllers, and EV charger. The vehicle is rear-wheel driven by two hub-mounted DC motors. The locations of these components are marked in Figure \ref{fig:msxii-top-view-annotated} and Figure \ref{fig:msxii-side-view-annotated}. Major vehicle dimensions are summarized in Table \ref{tab:msxii-dimensions}.
-
-\begin{figure}[hbp]
+% 5. Vehicle description shall be presented by profile and top view drawings showing the placement of major components such as driver, battery, ballast box, crush zone, seat belts mounting points, etc, along with overall dimensions including wheel base and tread
+\section{Vehicle drawings}
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{figures/msxii-top-view-annotated}
 \caption{Top view showing major dimensions and system positions}
 \label{fig:msxii-top-view-annotated}
 \end{figure}
 
-\begin{figure}[hbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{figures/msxii-side-view-annotated}
 \caption{Side view showing major dimensions and system positions}
 \label{fig:msxii-side-view-annotated}
 \end{figure}
 
-\begin{table}[hbp]
+\begin{table}[H]
 \centering
 \begin{tabular}{cc}
 \toprule
@@ -131,90 +84,85 @@ Max height   & \SI{1.23}{\metre}    \\
 \label{tab:msxii-dimensions}
 \end{table}
 
+% 6. Frame/chassis and roll cage type: tubular frame (_x_), composite (___), check one. Drawing shall show the (1) occupants positioned in the frame/chassis, (2) material specs of all metal components, and (3) compliance with Reg 10.3
 \section{Chassis}
-\subsection{Design}
 The chassis is a tube structure enclosing the occupant cell with small front and rear subframes to support suspension hardpoints. Smaller non-structural tube members will extend from the main frame to provide support to body panels as necessary. The majority of tubes are round, with square tubes being used only for elements intended to mount suspension and powertrain components (battery pack, motor controllers). Chassis elements use SAE 4130N chromoly tubes with diameters or side lengths ranging from 0.750" to 1.250", and wall thicknesses ranging from 0.035" to 0.065". Isometric drawings of the chassis are shown in Figures \ref{fig:chassis-front}, \ref{fig:chassis-top}, and \ref{fig:chassis-side}.
 
-\begin{figure}[hbp]
+Bending, cutting, and profiling of tubes was done by an external supplier. Welding of the chassis was done by a professional welder using GTAW, with support from team members for jigging and assembly. A complete welding jig was designed in CAD and manufactured using 80/20 aluminum extrusion tubing. Custom tube clamps were machined by the team to slot into jig members and fully support all chassis elements through multiple stages of assembly and welding.
+
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth]{figures/chassis-front}
 \caption{Chassis, front view}
 \label{fig:chassis-front}
 \end{figure}
 
-\begin{figure}[hbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{figures/chassis-top}
 \caption{Chassis, top view}
 \label{fig:chassis-top}
 \end{figure}
 
-\begin{figure}[hbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{figures/chassis-side}
 \caption{Chassis, side view}
 \label{fig:chassis-side}
 \end{figure}
 
-\subsection{Manufacturing}
-Bending, cutting, and profiling of tubes was done by an external supplier. Welding of the chassis was done by a professional welder using GTAW, with support from team members for jigging and assembly. A complete welding jig was designed in CAD and manufactured using 80/20 aluminum extrusion tubing, shown in Figure \ref{fig:welding-jig}. Custom tube clamps were machined by the team to slot into jig members and fully support all chassis elements through multiple stages of assembly and welding.
-
-\begin{figure}[hbp]
-\centering
-\includegraphics[width=0.75\textwidth]{figures/welding-jig}
-\caption{Welding jig on rotating mount}
-\label{fig:welding-jig}
-\end{figure}
-
-\subsection{Roll cage}
+% 7. Roll cage: Profile and frontal drawings shall include material specs and show compliance with Regs 10.3,10.3.B,10.3.C,10.3.G
+\section{Roll cage}
 The roll cage is integrated into the design of the chassis members enclosing the occupant cell. For the purposes of ASC regulations, the roll cage can be considered to include the A and B pillar hoops and elements connecting these two hoops lengthwise through the car. For clarity, these elements have been highlighted in Figure \ref{fig:roll-cage}.
 
-\begin{figure}[hbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth]{figures/roll-cage}
 \caption{Chassis with roll cage elements highlighted}
 \label{fig:roll-cage}
 \end{figure}
 
-\subsection{Doors}
 The vehicle's doors are designed with an aluminium planar tube structure enclosed by composite panels. Protection against side impacts is improved by the addition of 4 inches (approx.\ \SI{10}{\centi\meter}) of energy absorbing foam (Impaxx™ 700 Series from DOW Chemical). This foam, combined with the aluminum frame and composite outer panel, together are designed to satisfy crush zone requirements for ASC. The total thickness of the door (outer face to chassis) exceeds \SI{15}{\centi\meter}. The aluminum frame is designed to brace against chassis members in the event of a side impact and meets the same 5G requirement as the chassis, so that the foam layer can crush and absorb energy. FEA for the door frame is shown in Figures \ref{fig:door-displacement}, \ref{fig:door-stress}, and \ref{fig:door-stress-zoom} in Appendix \ref{sec:fea-chassis-door-images}.
 
+% 8. Seat Belts: 5 point (_x_), 6 point (___), check one
+% Drawing shall indicate location of mounting points and compliance with Reg. 10.3.E
 \section{Seat belts}
 MSXII is equipped with 5-point seat belts for both occupants. Seat belt hardpoints are mounted to metal tabs welded to chassis members, shown in Figure \ref{fig:seat-belt-tab-positions}. Figure \ref{fig:seat-belt-tab} shows one of these tabs. Figures \ref{fig:seat-belt-side-view} and \ref{fig:seat-belt-top-view} demonstrate compliance with ASC regulations 10.3.E.
 
-\begin{figure}[hbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth]{figures/seat-belt-tab-positions}
 \caption{Chassis mounting points for seat belts}
 \label{fig:seat-belt-tab-positions}
 \end{figure}
 
-\begin{figure}[hbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth]{figures/seat-belt-tab}
 \caption{Single seat belt tab}
 \label{fig:seat-belt-tab}
 \end{figure}
 
-\begin{figure}[hbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth]{figures/seat-belt-side-view}
 \caption{Side view of seat belt geometry}
 \label{fig:seat-belt-side-view}
 \end{figure}
 
-\begin{figure}[hbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth]{figures/seat-belt-top-view}
 \caption{Top view of seat belt geometry}
 \label{fig:seat-belt-top-view}
 \end{figure}
 
+% 9. Braking system: Front wheel only (__x_), Front-rear (___), check one.
+% Schematic and description of primary braking system shall include parking brake and component specs demonstrating compliance with Regs.10.5 and 10.6
 \section{Braking system}
-\subsection{Primary brakes}
 The primary braking system is designed with dual redundant front braking, consisting of two identical systems with separate master cylinders, hydraulic lines, and calipers to each of the left and right wheels. The master cylinders are operated in unision via a single mechanical brake pedal. The brake pedal assembly is turnkey from Wilwood (part \href{http://www.wilwood.com/Pedals/PedalProd.aspx?itemno=340-15079}{340-15079}) and has an integrated balance bar. A schematic of the primary system is shown in Figure \ref{fig:primary-brakes-schematic}.
 
-\begin{figure}[hbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{figures/primary-brakes-schematic}
 \caption{Schematic of primary braking system}
@@ -227,38 +175,40 @@ The master cylinders are Willwood part \href{http://www.wilwood.com/MasterCylind
 
 Brake rotors will be custom-machined to the disk thickness and diameter supported by the Willwood calipers. All mounting geometry on the suspension upright for primary calipers are designed to position the primary calipers in the optimal positions to meet braking specifications.
 
-\subsection{Parking brake}
 The parking brake will be implemented by a cable-actuated caliper mounted at one of the front wheels. The caliper is the Tolomatic ME10LA (part number \href{https://www.tolomatic.com/products/product-details/me10-mechanical-disc-brake#/specs-order}{0732-0003}). It will share the same brake disk as the primary braking system but is otherwise mechanically independent. Due to unresolvable dimensioning differences between the Tolomatic and Willwood calipers, the parking brake caliper cannot be mounted perfectly as per the manufacturer's recommendations and will have only 80\% overlap with the brake disk. However, this is expected to provide more than sufficient countertorque to keep the vehicle stationary as per ASC regulations 10.6. Figure \ref{fig:calipers-mounting-geometry} shows a front suspension upright with all three calipers mounted (two primary and one parking).
 
-\begin{figure}[hbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{figures/caliper-mounting-geometry}
 \caption{View of dual-primary calipers and parking caliper on front suspension upright }
 \label{fig:calipers-mounting-geometry}
 \end{figure}
 
+% 10. Steering system type: rack and pinion (_X_), other (___), check one.
+% Description shall include component selection and specs
 \section{Steering system}
 The steering system uses a rear-steering, left-hand-drive rack and pinion from Helix (part number \href{http://www.helixsuspension.com/catalog/Steering/Manual-Steering-Racks/HEXSR5/Omni-Manual-Steering-Rack---Rear-Steering}{188754}). The system uses a collapsible steering column from Sweet Mfg.\@ (part number \href{https://sweetmfg.biz/product.php?productid=2836}{405-10310}). The linkage uses dual U-joints to circumvent interfering brake system components and is shown in Figure \ref{fig:steering-assembly}. The travel of the steering rack is limited by a sleeve floating on the interface between the rack and the rack extensions. When at the maximum steering angle, the flange on the rack extension datums against the rack and pinion housing via the sleeve.
 
-\begin{figure}[hbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth]{figures/steering-assembly}
 \caption{View of steering assembly, hardstop shown enlarged}
 \label{fig:steering-assembly}
 \end{figure}
 
-\section{Suspension}
-\subsection{Front suspension}
+% 12. Front suspension: type: a-arm (_x_), other (___), check one
+% Description shall include drawing/photos, component specs, and engineering analysis demonstrating proper selection and sizing of rod ends with shear loads under applied loads as specified in Appendix F, section F.2
+\section{Front suspension}
 The front suspension uses dual A-arms with an outboard dampener and coilover spring. The upper and lower control arms are custom-built from 4130 chromoly tubes. The dampener and coilover are a single integrated assembly supplied by \"Ohlins, sold as the TTX25, which is marketed for Formula SAE vehicles. Figures \ref{fig:front-suspension} and \ref{fig:front-suspension-exploded} show the front suspension assembly.
 
-\begin{figure}[hbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth]{figures/front-suspension}
 \caption{View of front suspension assembly (parking brake caliper obstructed by hub)}
 \label{fig:front-suspension}
 \end{figure}
 
-\begin{figure}[hbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth]{figures/front-suspension-exploded}
 \caption{View of front suspension assembly, exploded}
@@ -267,17 +217,19 @@ The front suspension uses dual A-arms with an outboard dampener and coilover spr
 
 Since the front suspension lower control arm bears the majority of the shear stress from road forces, a load bearing flange has been added on the top side of the bearing seat which constrains it axially whenever in compression. This is shown in Figure \ref{fig:front-suspension-cross-section}. Both the upper and lower control arms use 7/16" spherical bearings (QA1 part number \href{https://www.qa1.net/rod-ends-and-related/spherical-bearings/ypb-t-high-misalignment-stainless-steel-series}{YPB7T}), which are pressed into their respective chromoly bearing seats in the control arms. A CAD nominal \SI{12}{\micro\metre} diametral press fit retains the spherical bearing in rare cases where the suspension rebound is sufficient to reverse the load. As an added precaution, a set screw in both the top and bottom helps to retain the bearing. Under maximum loading conditions, the stress due to bending in the bolt held in double shear was found to be \SI{204.63}{\mega\pascal}. Using an SAE grade 5 bolt results in a safety factor of approximately 3.0.
 
-\begin{figure}[hbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth]{figures/front-suspension-cross-section}
 \caption{View of front suspension critical rod end, cross-section}
 \label{fig:front-suspension-cross-section}
 \end{figure}
 
-\subsection{Rear suspension}
+% 13. Rear Suspension: type: a-arm (___), swing arm (_x_), other, check one.
+% Description shall include drawing/photos, component specs, and engineering analysis demonstrating proper selection and sizing of rod ends with shear loads under applied loads as specified in Appendix F, section F.2
+\section{Rear suspension}
 The rear suspension uses independent trailing arms mounted outwards from the rear of the chasssis. The trailing arm itself is custom-machined and mounts the same \"Ohlins TTX25 shock absorber as the front suspension. Figure \ref{fig:rear-suspension} shows the rear suspension assembly.
 
-\begin{figure}[hbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth]{figures/rear-suspension}
 \caption{View of rear suspension assembly}
@@ -286,28 +238,32 @@ The rear suspension uses independent trailing arms mounted outwards from the rea
 
 The rear suspension pivots about plain bearings pressed into the trailing arm. Stress in the trailing arm at the plain bearings was simulated using FEA as shown Figure \ref{fig:rear-suspension} to verify sufficient safety factor. The lack of rod ends allows a smaller interface with the rear suspension clevis mounts, which would otherwise need to be sized significantly larger.
 
-\section{Tires}
+% 14. Tires and rims: Description shall include brand, load, speed, and pressure rating to comply with Regs. 10.2
+\section{Tires and rims}
 MSXII is designed to use Schwalbe Energizer Solar 51L tires. These tires have a max load rating of \SI{195}{\kilo\gram} and are designed specifically for light electric vehicles travelling at highway speeds (\SI{120}{km/h}). Their maximum inflation pressure is \SI{70}{PSI}.
 
-\section{Battery box}
-The vehicle's main battery pack is divided between two custom composite enclosures, which are bolted to mounting points at the lower rear of the chassis, forward of the trailing arms. Each battery box's internal design contains two or four strings of six cell banks in series.
+Custom rims meeting the geometric specifications of the Energizer Solar tires were designed by the team and CNC milled out of 6061 aluminium.
 
-Electrical isolation is present at multiple levels in the pack design, with non-conducting fibreglass reinforced tubes providing the backbone for each string, and insulating shileding covering every string. This allows the use of metal reinforcement in the box and fasteners. Each string is secured via bolts to the battery box, and both battery boxes mount to the vehicle chassis via metal bolts as well.
+% 15. Hub design: Drawings showing wheel-hub assembly
 
-\section{Body panels}
-MSXII will have several discrete composite body panels mounted to the chassis. An exploded view of preliminary CAD is shown in Figure \ref{fig:body-panels}. Parameters such as the number of composite layers or thickness of core material will vary based on the requirements for each panel. The PV array is attached to the roof and hood panels via a uniform silicone layer. These panels are reinforced for increased rigidity. All body panels, including those supporting the array, mount to the chassis using bolts.
 
-\begin{figure}[hbp]
-\centering
-\includegraphics[width=0.75\textwidth]{figures/body-panels}
-\caption{Exploded view of preliminary body panels}
-\label{fig:body-panels}
-\end{figure}
+% 16. Crush zone: type: foam (__x_); tubular (___),check one
+% Description/drawing shall support compliance with Reg. 10.3.F
 
-\section{Fasteners}
-All structural fasteners used in the vehicle are at least of metric grade 8.8, with most being grade 10.9 or 12.9. Fujilok (self-locking) nuts from Spaenaur are used in all structural applications. The bolts mounting each motor are safety threaded as required for all blind-holes. A complete Bill of Materials listing every fastener used in the car is available upon request.
 
-\section{Finite element analysis}
+% 17. Battery box: Description/drawing to show how battery box is constructed and secured
+% in the chassis as per Reg. 8.4.B
+
+
+% 18. Description/drawing to show independent methods of array attachment as per Reg. 10.1.C
+
+
+% 19. Fasteners: Description of compliance with Reg. 10.4
+
+
+% 20. Vehicle Impact Analysis: Method: Classical (___), FEA (_x_), Testing (___)
+% Analysis shall be performed as per Appendix F Section F.3 and the results shall be presented in terms of factor of safety in tabulated form
+\section{Vehicle impact analysis}
 Finite element analysis was performed using ANSYS on the chassis, doors, and all suspension and steering components (downstream from the rack and pinion). FEA of the chassis and door followed the specifications provided by the ASC regulations. A general methodology was to fix a solid beam or wall in space and apply a 5G acceleration to the chassis against it. Images for FEA simulations of each requested scenario are shown in Appendix \ref{sec:fea-chassis-door-images}.
 
 Worst-case loading forces on each wheel were used to derive appropriate contraints and forces for FEA simulation of the suspension and steering system. A complete derivation and summary of loading forces on each wheel is given in Appendix \ref{sec:loading-conditions}. Images of all FEA simulations for suspension and steering are available in Appendix \ref{sec:fea-parts-images}.
@@ -357,7 +313,7 @@ A similar analysis to that for the steering arm was used. Force was applied to o
 \subsection{Results}
 All FEA results for suspension and steering components are summarized in Table \ref{tab:fea-results-suspension-steering}.
 
-\begin{table}[hbp]
+\begin{table}[H]
 \centering
 \begin{tabular}{lllrr}
 \toprule
