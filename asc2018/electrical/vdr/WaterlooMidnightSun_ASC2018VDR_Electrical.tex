@@ -102,7 +102,7 @@ Due to the different CAN specifications of the Tritium WaveSculptor motor contro
 
 \subsubsection{System Power Requirements}
 
-Our primary power requirements are from our motors. We have two NGM SCM150s with a total peak power of 15kW and total continuous power rating of 7.5kW. We plan on limiting maximum system current to 130A, giving us plenty of headroom for our fuse.
+Our primary power requirements are from our motors. We have two NGM SCM150s with a total peak power of 15kW and total continuous power rating of 7.5kW. We plan on limiting our maximum system discharge current to 130A and charge current to 122.4A, giving us plenty of headroom for our fuse.
 
 The maximum expected current draw of our LV system is negligible, but our maximum expected peak current is around 10A with the horn and lights on. For reliability, we will use two Vicor DC-DCs in parallel with a combined current capability of 21A to power the LV system.
 
@@ -110,16 +110,23 @@ The maximum expected current draw of our LV system is negligible, but our maximu
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth,page=2]{figures/msxii-block-diagrams}
-    \caption{Rough schematic of HV system with isolation mechanisms}
+    \includegraphics[width=\textwidth]{figures/hv-schematic}
+    \caption{Rough schematic of HV system}
     \label{fig:msxii-electrical-hv-system}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/solar-schematic}
+    \caption{Rough schematic of solar HV system}
+    \label{fig:msxii-electrical-solar-system}
 \end{figure}
 
 All HV systems are isolated at their sources by HV non-latching, normally-open relays. The main battery pack uses one relay in each enclosure to keep both enclosures disconnected when in the safe state. All other HV relays are powered by DC-DCs through Power Distribution.
 
 In a fault condition, the main battery relay is opened, disconnecting the battery pack. This also disconnects the DC-DCs, causing all other HV relays to open.
 
-To protect the HV system in case of a short, we are using the Eaton's Bussmann EV25-175, a DC-rated 175A High-Speed fuse capable of breaking 20kA. Per regulations, we have one in each battery enclosure. Our HV system uses 2 AWG wire rated for 255A. With a current limit set at 130A, a 175A fuse meets all fusing requirements.
+To protect the HV system in case of a short, we are using the Eaton's Bussmann EV25-175, a DC-rated 175A High-Speed fuse capable of breaking 20kA. Per regulations, we have one in each battery enclosure. Our HV system uses 2 AWG wire rated for 255A. With a maximum discharge current limit set at 130A and charge limit at 122.4A, a 175A fuse meets all fusing requirements.
 
 \includepdf[pages={-}]{figures/bus-ele-ds-10563-ev-power}
 
@@ -130,6 +137,14 @@ To protect the HV system in case of a short, we are using the Eaton's Bussmann E
 See attached form.
 
 \includepdf[pages={-}]{forms/battery_approval_form.pdf}
+
+\subsection{BPS Fault Startup}
+
+After a BPS fault occurs, only critical systems are powered and the BPS fault strobe and dash indicator will be on. These critical systems include the BPS, power distribution, driver controls, rear lights, and telemetry. All HV relays will be disconnected.
+
+To clear a BPS fault, the driver must first power off the car through driver controls, turning off the fault strobe and dash indicator. Then, the driver must start the car again, beginning the normal power sequence. Since our process of starting the car requires the driver to activate the mechanical brake, this also prevents the car from being restarted without coming to a complete stop.
+
+It begins by checking the BPS condition to ensure that the fault has actually been cleared. Once the HV battery is known to be safe, we allow the driver to initiate the startup sequence. To prevent a rolling restart, we require the driver to hold the mechanical brake while pressing the power button to start the car. If successful, we connect the battery's HV relay and begin powering up the rest of our non-critical systems by providing LV power from the DC-DC to the rest of our boards. This includes driver display, front lights, motor controllers, precharge controllers, solar sense, etc. Once all boards have been powered, we close our HV relays, connecting the motor controllers, solar array, and charger. At this point, the car is fully powered and ready to drive.
 
 % Bibliography
 %\pagebreak

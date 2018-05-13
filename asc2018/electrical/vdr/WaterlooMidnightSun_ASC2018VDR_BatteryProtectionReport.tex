@@ -134,7 +134,8 @@ See attached form
 \begin{table}[!htbp]
 \begin{tabular}{|l|l|}
 \hline
-\textbf{Over current set point (A)}    & 130 \\ \hline
+\textbf{Over current charge set point (A)}      & 122.4 \\ \hline
+\textbf{Over current discharge set point (A)}   & 130 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -156,7 +157,12 @@ drive the two pack fans. This also disconnects the HV battery relay and the
 main power switch.
 
 The only way to clear a fault will be to power off the car, which will result
-in the car undergoing the proper power-sequencing steps.
+in the car undergoing the proper power-sequencing steps. To prevent rolling restart
+after a fault, we require the driver to hold the mechanical brake in order to clear the fault
+and enter drive, forcing the car to be stationary before the car will drive again.
+
+Our supplemental battery is not charged within the vehicle, so voltage monitoring is provided to
+the driver through our driver display.
 
 \subsection{5.2.E.9: Rendering Firmware Static}
 
