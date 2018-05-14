@@ -51,7 +51,7 @@
 % Main Matter
 % 1. History of team and vehicle (one paragraph)
 \section{History}
-Midnight Sun was founded in 1988 at the University of Waterloo. The team has produced 11 solar-powered vehicles since its inception, numbered MSI through MSXI. MSX and its predecessors have been traditional Challenger class cars. MSXI was the team's first attempt at a Cruiser class vehicle, which ultimately suffered from design issues relating to its monocoque design. With MSXII, the team has regrouped and designed a new Cruiser vehicle from the gound up, focussing strongly on reliability, safety, and manufacturability.
+Midnight Sun was founded in 1988 at the University of Waterloo. The team has produced 11 solar-powered vehicles since its inception, numbered MSI through MSXI. MSX and its predecessors have been traditional Challenger class cars. MSXI was the team's first attempt at a Cruiser class vehicle, which ultimately suffered from design issues relating to its monocoque design. With MSXII, the team has regrouped and designed a new Cruiser vehicle from the ground up, focussing strongly on reliability, safety, and manufacturability.
 
 % 5. Vehicle description shall be presented by profile and top view drawings showing the placement of major components such as driver, battery, ballast box, crush zone, seat belts mounting points, etc, along with overall dimensions including wheel base and tread
 \section{Vehicle drawings}
@@ -245,20 +245,32 @@ MSXII is designed to use Schwalbe Energizer Solar 51L tires. These tires have a 
 Custom rims meeting the geometric specifications of the Energizer Solar tires were designed by the team and CNC milled out of 6061 aluminium.
 
 % 15. Hub design: Drawings showing wheel-hub assembly
-
+ 
+ %SNAP DAT PIC
 
 % 16. Crush zone: type: foam (__x_); tubular (___),check one
 % Description/drawing shall support compliance with Reg. 10.3.F
+\section{Crush Zone}
+MSXII has been designed with an extruded polystyrene foam (EPS) crush zone, designed to absorb the energy of a 5G impact to the doors on both sides of the vehicle. The EPS crush foam is enclosed between the outer door panel and the inner door frame, made of 6061-T6 aluminum tubing, and the inner door panel. EPS foam does not shatter under loading, ensuring no fragments enter the driver cell in the event of a collision. 
 
+% DEVON PUT A PICTURE HERE PLS :)
 
 % 17. Battery box: Description/drawing to show how battery box is constructed and secured
 % in the chassis as per Reg. 8.4.B
+\section{Battery Box}
+Two battery packs are implemented in the design of MSXII: a "slave" pack providing exclusively power and some auxiliary electrical control, and a "master" pack, containing both battery cells and electrical boards which control the battery system. The full details of the electrical side of the pack construction is detailed in the appropriate electrical system VDR. From a mechanical standpoint, both packs have identical designs and mounting features. 
 
+The pack is constructed from 1/4" thick honeycomb fibreglass composite panels, bonded to a welded aluminum frame with an inert epoxy. Fibreglass is electrically insulating, and hence isolates the internals of both battery boxes from the external metal frames and surrounding chassis. The aluminum frame has welded mounting tabs on both the top and bottom of the box, which interface with matching mounting tabs welded to the chassis above and below the box. FEA with a 20G impact load on all mounting tabs yielded safety factors around 1.5-2. This high loading was applied to assure compliance with World Solar Challenge regulations - well above the required 5G impact loading. The mounting tabs provide a location on both sides of each box (master and slave) for a fastener and locking nut to secure the box to the chassis and prevent the battery enclosure from becoming loose during an impact or rollover event. 
+
+%ROBIN HAD SIMS BUT BROKE THEM SO HE SHOULD HAVE FEA PICS TMRW
 
 % 18. Description/drawing to show independent methods of array attachment as per Reg. 10.1.C
-
+\section{Array Panel Attachment}
+Both the front and rear array panels are attached to the chassis of MSXII on a custom 6-bar linkage, made from aluminum members and actuated with a gas spring. The upper member of the hinges are attached to the respective array panel with epoxy resin. This serves as the primary method of array attachment to the chassis of the vehicle. As a secondary method to provide redundancy to the first method of array attachment, aluminum aircraft cable is connected to each panel individually with epoxy resin, and connected to the chassis. This satisfies the regulation, as each attachment method is independent of one another. 
 
 % 19. Fasteners: Description of compliance with Reg. 10.4
+\section{Fasteners}
+All structural fasteners used in the vehicle are at least of metric grade 8.8, with most being grade 10.9 or 12.9. Fujilok (self-locking) nuts from Spaenaur are used in all structural applications. The bolts mounting each motor are safety threaded as required for all blind-holes. A complete Bill of Materials listing every fastener used in the car is available upon request.
 
 
 % 20. Vehicle Impact Analysis: Method: Classical (___), FEA (_x_), Testing (___)
