@@ -187,13 +187,20 @@ The parking brake will be implemented by a cable-actuated caliper mounted at one
 % 10. Steering system type: rack and pinion (_X_), other (___), check one.
 % Description shall include component selection and specs
 \section{Steering system}
-The steering system uses a rear-steering, left-hand-drive rack and pinion from Helix (part number \href{http://www.helixsuspension.com/catalog/Steering/Manual-Steering-Racks/HEXSR5/Omni-Manual-Steering-Rack---Rear-Steering}{188754}). The system uses a collapsible steering column from Sweet Mfg.\@ (part number \href{https://sweetmfg.biz/product.php?productid=2836}{405-10310}). The linkage uses dual U-joints to circumvent interfering brake system components and is shown in Figure \ref{fig:steering-assembly}. The travel of the steering rack is limited by a sleeve floating on the interface between the rack and the rack extensions. When at the maximum steering angle, the flange on the rack extension datums against the rack and pinion housing via the sleeve.
+The steering system uses a rear-steering, left-hand-drive rack and pinion from Helix (part number \href{http://www.helixsuspension.com/catalog/Steering/Manual-Steering-Racks/HEXSR5/Omni-Manual-Steering-Rack---Rear-Steering}{188754}). The system uses a collapsible steering column from Sweet Mfg.\@ (part number \href{https://sweetmfg.biz/product.php?productid=2836}{405-10310}). The linkage uses dual U-joints to circumvent interfering brake system components and is shown in Figure \ref{fig:steering-assembly}. The travel of the steering rack is limited by a sleeve floating on the interface between the rack and the rack extensions. When at the maximum steering angle, the flange on the rack extension datums against the rack and pinion housing via the sleeve. Figure \ref{fig:u-joints} shows the torque transmission strategy at each joint consisting of a combination of splines and double D shafts. 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth]{figures/steering-assembly}
 \caption{View of steering assembly, hardstop shown enlarged}
 \label{fig:steering-assembly}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{figures/u-joints}
+\caption{Torque transmission in steering assembly}
+\label{fig:u-joints}
 \end{figure}
 
 % 12. Front suspension: type: a-arm (_x_), other (___), check one
@@ -220,7 +227,7 @@ Since the front suspension lower control arm bears the majority of the shear str
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.65\textwidth]{figures/retention-plate}
-\caption{Exploded view of retention plate}
+\caption{Cross section of retention plates in UCA and LCAs (top of the image is upwards direction)}
 \label{fig:front-sus-retention-plate}
 \end{figure}
 
@@ -236,7 +243,14 @@ The rear suspension uses independent trailing arms mounted outwards from the rea
 \label{fig:rear-suspension}
 \end{figure}
 
-The rear suspension pivots about plain bearings pressed into the trailing arm. Stress in the trailing arm at the plain bearings was simulated using FEA as shown Figure \ref{fig:rear-suspension} to verify sufficient safety factor. The lack of rod ends allows a smaller interface with the rear suspension clevis mounts, which would otherwise need to be sized significantly larger.
+The rear suspension pivots about plain bearings pressed into the trailing arm. Stress in the trailing arm at the plain bearings was simulated using FEA as shown Figure \ref{fig:rear-suspension} to verify sufficient safety factor. The lack of rod ends allows a smaller interface with the rear suspension clevis mounts, which would otherwise need to be sized significantly larger. Figure \ref{fig:rear-suspension-cross-section} shows a cross section of the trailing arm clevises.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{figures/rear-suspension-cross-section}
+\caption{Cross section of rear suspension}
+\label{fig:rear-suspension-cross-section}
+\end{figure}
 
 % 14. Tires and rims: Description shall include brand, load, speed, and pressure rating to comply with Regs. 10.2
 \section{Tires and rims}
@@ -260,13 +274,20 @@ The hub assembly contains bearings which allow rotation of the wheel and hub abo
 % 16. Crush zone: type: foam (__x_); tubular (___),check one
 % Description/drawing shall support compliance with Reg. 10.3.F
 \section{Crush Zone}
-MSXII has been designed with an extruded polystyrene foam (EPS) crush zone, designed to absorb the energy of a 5G impact to the doors on both sides of the vehicle. The EPS crush foam is enclosed between the outer door panel and the inner door frame, made of 6061-T6 aluminum tubing, and the inner door panel. EPS foam does not shatter under loading, ensuring no fragments enter the driver cell in the event of a collision. 
+MSXII has been designed with an extruded polystyrene foam (EPS) crush zone, designed to absorb the energy of a 5G impact to the doors on both sides of the vehicle. The EPS crush foam is enclosed between the outer door panel and a load distribution panel positioned outside inner door frame, made of 6061-T6 aluminum tubing, and the inner door panel. EPS foam does not shatter under loading, ensuring no fragments enter the driver cell in the event of a collision. Figures \ref{fig:crush-zone} and  \ref{fig:crush-zone-load-path} show the different layers that make up the doors' structure as well as the key load path for transferring an impact to the structural chassis and roll cage.  
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth]{figures/crush-zone.png} %<-- UPDATE
 \caption{Door assembly showing crush absorbing foam}
 \label{fig:crush-zone}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{figures/crush-zone-load-path.png} %<-- UPDATE
+\caption{Key structural members in load path}
+\label{fig:crush-zone-load-path}
 \end{figure}
 
 % 17. Battery box: Description/drawing to show how battery box is constructed and secured
